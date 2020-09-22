@@ -9,7 +9,7 @@ export default {
   name: 'level_2_2_2',
   data () {
     return {
-      val: ''
+      val: '多级菜单 -> 二级-2 -> 3级2'
     }
   }
 }

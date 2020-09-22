@@ -42,5 +42,13 @@ export default {
   tree_table_page: '樹狀表格',
   org_tree_page: '組織結構樹',
   drag_drawer_page: '可拖動抽屜',
-  tree_select_page: '樹狀下拉選擇器'
+  tree_select_page: '樹狀下拉選擇器',
+  mytest1: 'mytest1',
+  mytest: 'mytest',
+  mytest2: 'mytest2',
+  mytest3: 'mytest3',
+  'mytest3-1': 'mytest3-1',
+  'mytest3-2': 'mytest3-2',
+  'mytest3-3': 'mytest3-3',
+  'i18n-mytest': 'test页面i18n多语言dmeo,这是繁体'
 }

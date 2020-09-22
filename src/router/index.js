@@ -7,6 +7,13 @@ import { setToken, getToken, canTurnTo, setTitle } from '@/libs/util'
 import config from '@/config'
 const { homeName } = config
 
+// hack router push callback
+const originalPush = Router.prototype.push
+Router.prototype.push = function push (location, onResolve, onReject) {
+  if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
+  return originalPush.call(this, location).catch(err => err)
+}
+
 Vue.use(Router)
 const router = new Router({
   routes,
@@ -15,8 +22,11 @@ const router = new Router({
 const LOGIN_PAGE_NAME = 'login'
 
 const turnTo = (to, access, next) => {
-  if (canTurnTo(to.name, access, routes)) next() // 有权限，可访问
-  else next({ replace: true, name: 'error_401' }) // 无权限，重定向到401页面
+  if (canTurnTo(to.name, access, routes)) {
+    next() // 有权限，可访问
+  } else {
+    next({ replace: true, name: 'error_401' }) // 无权限，重定向到401页面
+  }
 }
 
 router.beforeEach((to, from, next) => {
